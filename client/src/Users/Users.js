@@ -26,11 +26,15 @@ class Users extends React.Component {
     return (
       <div className="userList ">
         <h2>List of Users</h2>
-        <ul>
-          {this.state.users.map(user => {
-            return <li key={user.id}>{user.username}</li>;
-          })}
-        </ul>
+        {localStorage.getItem('jwt') ? (
+          <ul>
+            {this.state.users.map(user => {
+              return <li key={user.id}>{user.username}</li>;
+            })}
+          </ul>
+        ) : (
+          <p style={{ color: 'red' }}>You must be logged in to view List...</p>
+        )}
       </div>
     );
   }

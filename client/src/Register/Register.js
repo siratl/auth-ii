@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
 
-class Login extends Component {
+class Register extends Component {
   state = {
     username: '',
-    password: '',
+    passdowd: '',
+    department: '',
   };
 
   handleChange = ev => {
@@ -15,21 +16,19 @@ class Login extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault();
-    const url = 'http://localhost:5000/api/auth/login';
+    const url = 'http://localhost:5000/api/auth/register';
     axios
       .post(url, this.state)
       .then(res => {
-        localStorage.setItem('jwt', res.data.token);
-
-        this.props.history.push('/users');
+        this.props.history.push('/login');
       })
       .catch(err => console.error(err));
   };
 
   render() {
     return (
-      <div className="loginPage">
-        <h2>Login</h2>
+      <div className="registerPage">
+        <h2>Register</h2>
         <Form onSubmit={this.handleSubmit}>
           <FormGroup row>
             <Label for="username" sm={2}>
@@ -61,6 +60,21 @@ class Login extends Component {
               />
             </Col>
           </FormGroup>
+          <FormGroup row>
+            <Label for="password" sm={2}>
+              Password
+            </Label>
+            <Col sm={10}>
+              <Input
+                type="text"
+                value={this.state.department}
+                onChange={this.handleChange}
+                name="department"
+                id="department"
+                placeholder="department"
+              />
+            </Col>
+          </FormGroup>
           <FormGroup
             style={{
               display: 'flex',
@@ -69,7 +83,7 @@ class Login extends Component {
             check
             row
           >
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Register</Button>
           </FormGroup>
         </Form>
       </div>
@@ -77,4 +91,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

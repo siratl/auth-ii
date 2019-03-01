@@ -15,7 +15,13 @@ body {
   width: 500px;
 }
 
-h2, li {
+h2 {
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+li {
   color: white
 }
 
@@ -23,10 +29,28 @@ Label {
   color: white;
 }
 
+
 .userList {
   margin: auto auto;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 10px 40px;
+  width: 500px;
+}
+
+.navBar {
+  padding: 15px;
+  text-align: center;
+  color: white;
+  margin-bottom: 40px;
+  background-color: rgb(22, 22, 32);
+
+}
+
+.registerPage {
+  margin: auto auto;
+  padding: 20px 40px;
+  border: 1px solid grey;
+  border-radius: 5px;
   width: 500px;
 }
